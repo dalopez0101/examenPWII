@@ -32,6 +32,14 @@ class AuthController extends Controller
             );
         }
 
+        $remember = $request->boolean('remember');
+
+        if (Auth::attempt($credentials, $remember)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended(route('dashboard'));
+        }
+
         return back()
             ->withErrors([
                 'email' => 'Las credenciales son incorrectas.',

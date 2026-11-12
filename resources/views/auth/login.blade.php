@@ -67,8 +67,22 @@
 
         </form>
 
+        <div class="form-check mb-3">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                name="remember"
+                id="remember"
+                value="1"
+            >
+
+            <label class="form-check-label" for="remember">
+                Recordarme
+            </label>
+        </div>
+
         <div class="login-footer">
-            <p>© {{ date('Y') }} - Sistema de administración</p>
+            <p>© {{ date('Y') }} - Agrovalle honduras</p>
         </div>
 
     </div>

@@ -40,8 +40,9 @@
                 </li>
 
                 <li class="sidebar-menu-item">
-                    <a href="#" class="sidebar-menu-link" title="Proveedores">
-                        <i class="bi bi-truck"></i>
+                    <a href="{{ route('proveedores.index') }}"
+                        class="sidebar-menu-link {{ request()->routeIs('proveedores.*') ? 'active' : '' }}">
+                        <i class="bi bi-building"></i>
                         <span>Proveedores</span>
                     </a>
                 </li>
