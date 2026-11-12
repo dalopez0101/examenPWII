@@ -50,6 +50,7 @@
     <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
 
+    <script src="{{ asset('assets/js/sidebar.js') }}"></script>
     @stack('scripts')
 
 </body>

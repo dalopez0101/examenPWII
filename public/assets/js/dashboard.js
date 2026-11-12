@@ -13,30 +13,6 @@
 */
 
 document.addEventListener('DOMContentLoaded', function () {
-    // -----------------------------------------------------------------
-    // 1. Mobile Sidebar Toggle & Backdrop Overlay
-    // -----------------------------------------------------------------
-    const sidebar = document.querySelector('.sidebar-wrapper');
-    const toggleBtn = document.querySelector('.sidebar-toggle-btn');
-    
-    // Create and append backdrop overlay for mobile sidebar
-    let overlay = document.createElement('div');
-    overlay.className = 'sidebar-overlay';
-    document.body.appendChild(overlay);
-
-    if (toggleBtn && sidebar) {
-        toggleBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            sidebar.classList.toggle('show');
-            overlay.classList.toggle('show', sidebar.classList.contains('show'));
-        });
-
-        // Close sidebar when clicking on backdrop overlay
-        overlay.addEventListener('click', function () {
-            sidebar.classList.remove('show');
-            overlay.classList.remove('show');
-        });
-    }
 
 
     // -----------------------------------------------------------------
@@ -348,30 +324,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // -----------------------------------------------------------------
-    // 6. Desktop Sidebar Minimize Interaction
-    // -----------------------------------------------------------------
-    const desktopToggleBtn = document.querySelector('#desktop-sidebar-toggle');
-    if (desktopToggleBtn) {
-        desktopToggleBtn.addEventListener('click', function () {
-            document.body.classList.toggle('sidebar-minimized');
-            
-            // Toggle icon direction
-            const icon = desktopToggleBtn.querySelector('i');
-            if (icon) {
-                if (document.body.classList.contains('sidebar-minimized')) {
-                    icon.className = 'bi bi-chevron-bar-right';
-                } else {
-                    icon.className = 'bi bi-chevron-bar-left';
-                }
-            }
-            
-            // Trigger a window resize event so that charts (ApexCharts) redraw correctly
-            setTimeout(() => {
-                window.dispatchEvent(new Event('resize'));
-            }, 300);
-        });
-    }
 
     // -----------------------------------------------------------------
     // 7. Fullscreen Toggle Interaction

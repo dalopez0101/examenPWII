@@ -1,80 +1,95 @@
-         <!--
-         START: Sidebar Component
-         Highly polished, dark-green sticky navigation
-         ========================================== -->
-  <div class="sidebar-wrapper" id="sidebar">
-    <!-- Brand Logo / Identity -->
-    <a href="index.html" class="sidebar-brand">
-      <i class="bi bi-asterisk"></i>
-      <span>{{$empresa?? 'tienda'}}</span>
+<div class="sidebar-wrapper" id="sidebar">
+
+    <!-- Identidad de la tienda -->
+    <a href="{{ route('dashboard') }}" class="sidebar-brand">
+        <i class="bi bi-asterisk"></i>
+        <span>AGROVALLE HONDURAS</span>
     </a>
 
-    <!-- Navigation Menu -->
     <div class="flex-grow-1 overflow-y-auto">
-      <!-- Group: Menu -->
-      <div class="sidebar-menu-section">
-        <div class="sidebar-menu-title">Menu</div>
-        <ul class="sidebar-menu-list">
-          <li class="sidebar-menu-item">
-            <a href="{{ route('dashboard') }}"
-              class="sidebar-menu-link active"
-              id="menu-overview"
-              title="Dashboard">
-              <i class="bi bi-grid-fill"></i>
-              <span>Dashboard</span>
-            </a>
-          </li>
-        </ul>
-      </div>
 
-      <!-- Group: Components -->
-      <div class="sidebar-menu-section">
-        <div class="sidebar-menu-title">Sistema</div>
-        <ul class="sidebar-menu-list">
-          <li class="sidebar-menu-item">
-            <a href="tables-basic.html" class="sidebar-menu-link" id="menu-basictables" title="Basic Tables">
-              <i class="bi bi-table"></i>
-              <span>Insumos</span>
-            </a>
-          </li>
-          <li class="sidebar-menu-item">
-            <a href="tables-basic.html" class="sidebar-menu-link" id="menu-basictables" title="Basic Tables">
-              <i class="bi bi-table"></i>
-              <span>Proveedores</span>
-            </a>
-          </li>
-          <li class="sidebar-menu-item">
-            <a href="tables-basic.html" class="sidebar-menu-link" id="menu-basictables" title="Basic Tables">
-              <i class="bi bi-table"></i>
-              <span>Empleados</span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
+        <!-- Menú principal -->
+        <div class="sidebar-menu-section">
+            <div class="sidebar-menu-title">Menú</div>
 
-      <!-- Group: Pages -->
-      <div class="sidebar-menu-section">
-        <div class="sidebar-menu-title">Pages</div>
-        <ul class="sidebar-menu-list">
-          //inicio de sesion
-          <li class="sidebar-menu-item">
-            <a href="page-login.html" class="sidebar-menu-link" id="menu-loginpage" title="Login Page">
-              <i class="bi bi-box-arrow-in-right"></i>
-              <span>Iniciar sesion</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+            <ul class="sidebar-menu-list">
+                <li class="sidebar-menu-item">
+                    <a href="{{ route('dashboard') }}"
+                       class="sidebar-menu-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"
+                       title="Dashboard">
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Módulos del sistema -->
+        <div class="sidebar-menu-section">
+            <div class="sidebar-menu-title">Sistema</div>
+
+            <ul class="sidebar-menu-list">
+
+                <li class="sidebar-menu-item">
+                    <a href="{{ route('insumos.index') }}"
+                       class="sidebar-menu-link {{ request()->routeIs('insumos.*') ? 'active' : '' }}"
+                       title="Insumos">
+                        <i class="bi bi-box-seam"></i>
+                        <span>Insumos</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-link" title="Proveedores">
+                        <i class="bi bi-truck"></i>
+                        <span>Proveedores</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-link" title="Empleados">
+                        <i class="bi bi-people"></i>
+                        <span>Empleados</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <!-- Cuenta -->
+        <div class="sidebar-menu-section">
+            <div class="sidebar-menu-title">Cuenta</div>
+
+            <ul class="sidebar-menu-list">
+                <li class="sidebar-menu-item">
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="sidebar-menu-link w-100 border-0 bg-transparent text-start">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Cerrar sesión</span>
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+
     </div>
 
-    <!-- Sidebar Profile Card (Dynamic Footer) -->
+    <!-- Perfil del usuario -->
     <div class="sidebar-profile">
-      <img src="{{ asset('assets/images/avatar.png') }}" alt="Administrator" class="sidebar-profile-img"
-        onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop'">
-      <div class="sidebar-profile-info">
-        <div class="sidebar-profile-name">Administrator</div>
-        <div class="sidebar-profile-email">admin@email.com</div>
-      </div>
+        <img src="{{ asset('assets/images/avatar.png') }}"
+             alt="Usuario"
+             class="sidebar-profile-img">
+
+        <div class="sidebar-profile-info">
+            <div class="sidebar-profile-name">
+                {{ Auth::user()->name }}
+            </div>
+
+            <div class="sidebar-profile-email">
+                {{ Auth::user()->email }}
+            </div>
+        </div>
     </div>
-  </div>
+
+</div>
