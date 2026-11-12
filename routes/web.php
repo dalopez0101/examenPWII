@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 
 use App\Http\Controllers\InsumoController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\EmpleadoController;
 
 Route::get('/login', [AuthController::class, 'showLogin'])
     ->name('login');
@@ -33,6 +34,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout'])
         ->name('logout');
+
+    Route::resource('empleados', EmpleadoController::class)
+    ->parameters(['empleados' => 'empleado']);
 
 });
 

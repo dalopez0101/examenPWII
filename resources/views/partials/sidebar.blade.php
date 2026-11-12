@@ -48,7 +48,9 @@
                 </li>
 
                 <li class="sidebar-menu-item">
-                    <a href="#" class="sidebar-menu-link" title="Empleados">
+                    <a href="{{ route('empleados.index') }}"
+                    class="sidebar-menu-link {{ request()->routeIs('empleados.*') ? 'active' : '' }}">
+
                         <i class="bi bi-people"></i>
                         <span>Empleados</span>
                     </a>
