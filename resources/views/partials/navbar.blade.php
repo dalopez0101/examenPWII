@@ -100,19 +100,31 @@
           <button class="navbar-profile-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
             aria-expanded="false" id="profile-dropdown">
             <img src="{{ asset('assets/images/avatar.png') }}" alt="Profile Image" class="navbar-profile-img">
-            <span class="navbar-profile-name d-none d-md-inline">Administrator</span>
+            <span class="navbar-profile-name d-none d-md-inline">
+                {{ Auth::user()->name }}
+            </span>
             <i class="bi bi-chevron-down navbar-profile-caret"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-profile" aria-labelledby="profile-dropdown">
-            <li class="dropdown-header">Welcome !</li>
+            <li class="dropdown-header">
+                Bienvenido, {{ Auth::user()->name }}!
+            </li>
             <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> My Account</a></li>
             <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a></li>
             <li><a class="dropdown-item" href="#"><i class="bi bi-lock"></i> Lock Screen</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item text-danger" href="page-login.html"><i class="bi bi-box-arrow-right"></i>
-                Logout</a></li>
+            <li>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+
+                    <button type="submit" class="dropdown-item">
+                        <i class="bi bi-box-arrow-right"></i>
+                        Cerrar sesión
+                    </button>
+                </form>
+            </li>
           </ul>
         </div>
       </div>
