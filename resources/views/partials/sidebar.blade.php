@@ -2,7 +2,7 @@
 
     <!-- Identidad de la tienda -->
     <a href="{{ route('dashboard') }}" class="sidebar-brand">
-        <i class="bi bi-asterisk"></i>
+        <img src="{{ asset('assets/images/logo.png') }}" alt="Logo Agrovalle Honduras" class="sidebar-brand-logo" width="67">
         <span>AGROVALLE HONDURAS</span>
     </a>
 
