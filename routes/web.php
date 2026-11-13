@@ -10,6 +10,11 @@ use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\DashboardController;
 
+
+Route::get('/', function () {
+    return redirect()->route('login');
+});
+
 Route::get('/login', [AuthController::class, 'showLogin'])
     ->name('login');
 
